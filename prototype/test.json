@@ -1,0 +1,35 @@
+{
+	Tree: {
+		Question: I am obvious!,
+		Answers: [
+			{
+				Text: I give no useful information.,
+				Node: {
+					Question: You are about to fail, want help?,
+					Answers: [
+						{
+							Text: Help me!,
+							Node: {End: SUCCES!}
+						},
+						{
+							Text: I want to fail!,
+							Node: {End: OUT OF QUESTIONS, FAIL...}
+						}
+					]
+				}
+			},
+			{
+				Text: Or me!,
+				Node: {End: SUCCES!}
+			},
+			{
+				Text: Click me!,
+				Node: {End: SUCCES!}
+			},
+			{
+				Text: But not me!,
+				Node: {End: INCORRECT, FAIL...}
+			}
+		]
+	}
+}
