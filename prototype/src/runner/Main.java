@@ -3,9 +3,12 @@ package runner;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
-import inference.SolveEngine;
+import knowledgeBase.KnowledgeBase;
 import knowledgeBase.Question;
 import knowledgeBase.Rule;
+import logic.Fact;
+import logic.Or;
+import logic.TruthState;
 import tree.Tree;
 
 public class Main {
@@ -48,7 +51,9 @@ public class Main {
 		 * - Joost, Herman & Jeroen
 		 */
 		
-		ArrayList<Question> questions = new ArrayList<Question>();
+		/* TEST KB GEN
+		
+		KnowledgeBase kb = new KnowledgeBase();
 		
 		Question q = new Question("I am obvious!");//Create a question
 		Hashtable<String,String> c = new Hashtable<String,String>();//create some consequences of an option
@@ -61,18 +66,20 @@ public class Main {
 		c.put("END", "FALSE");
 		q.addOption("But not me!", c);
 		q.addOption("I give no useful information.", new Hashtable<String,String>());
-		questions.add(q);
+		kb.addQuestion(q);
 		
-		ArrayList<Rule> rules = new ArrayList<Rule>();
 		Rule r = new Rule();//add a rule
-		r.addCondition("ACTIVATE_RULE", "TRUE");//if ACTIVATE_RULE is set to TRUE
+		Or or = new Or();
+		or.add(new Fact("ACTIVATE_RULE", "TRUE"));
+		or.add(new Fact("ARBITRARY","WHYNOT"));
+		r.setCondition(or);//if ACTIVATE_RULE is set to TRUE
 		r.addConsequence("END", "TRUE");//then END may be set to TRUE
-		rules.add(r);
+		kb.addRule(r);
 		
 		r = new Rule();
-		r.addCondition("SECOND", "HELP");//The value can be any string
+		r.setCondition(new Fact("SECOND", "HELP"));//The value can be any string
 		r.addConsequence("END", "TRUE");
-		rules.add(r);
+		kb.addRule(r);
 		
 		q = new Question("You are about to fail, want help?");
 		c = new Hashtable<String,String>();
@@ -80,9 +87,27 @@ public class Main {
 		q.addOption("Help me!", c);
 		c = new Hashtable<String,String>();//no consequences
 		q.addOption("I want to fail!", c);
-		questions.add(q);
+		kb.addQuestion(q);
 		
-		Tree decTree = new Tree(SolveEngine.solve("END", "TRUE", questions, rules)); //solve the created problem and store the tree
-		decTree.save("test.json");//export to JSON (also prints export)
+		q = new Question("Want to do this the hard way, or the easy way?");
+		c = new Hashtable<String,String>();
+		c.put("WAY", "HARD");
+		q.addOption("Hard way!", c);
+		c = new Hashtable<String,String>();
+		c.put("WAY", "EASY");
+		q.addOption("Easy way!", c);
+		kb.addQuestion(q);
+		
+		kb.addGoal("END", "TRUE", "Ended the old fashion way!");
+		kb.addGoal("WAY", "EASY", "Ended the new, easy way!");
+		
+		Tree decTree = new Tree(kb.solve()); //solve the created problem and store the tree
+		decTree.save("test.json");//export to JSON (also echoes file)
+		
+		*/
+		
+		KnowledgeBase kb = new KnowledgeBase("knowledge-base-example.xml");
+		//Tree decTree = new Tree(kb.solve());
+		//decTree.save("test.json");
 	}
 }

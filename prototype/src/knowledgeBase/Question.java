@@ -1,6 +1,7 @@
 package knowledgeBase;
 
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.Scanner;
@@ -12,25 +13,26 @@ public class Question {
 		public Hashtable<String,String> consequences;
 		//the consequences are basically just a small knowledge base, which can be merged with the known facts.
 		
+		public Option(String description){
+			this(description,new Hashtable<String,String>());
+		}
+		
 		public Option(String description, Hashtable<String,String> consequences) {
 			this.description = description;
 			this.consequences = consequences;
 		}
 		
-		public Hashtable<String,String> select(Hashtable<String,String> kb){
-			//applies all consequences to the knowledge base
-			Hashtable<String,String> next = new Hashtable<String,String>(kb.size());
-			Iterator<String> factNames = consequences.keySet().iterator();
-			while (factNames.hasNext()) {
-				String cur = factNames.next();
-				next.put(cur, consequences.get(cur));
-			}
-			return next;
+		public void addConsequence(String factName, String factValue){
+			consequences.put(factName, factValue);
 		}
 	}
 	
 	private String question;
 	private ArrayList<Option> options;
+	
+	public Question(){
+		this("UNDEFINED");//Default to warning string
+	}
 	
 	public Question(String question){
 		this.question = question;
@@ -43,77 +45,19 @@ public class Question {
 		options.add(new Option(description, consequences));
 	}
 	
-	public boolean leadsToFact(String factName){
-		//returns whether this question can assign a value to factName
-		Iterator<Option> opsIt = options.iterator();
-		while (opsIt.hasNext()){
-			//Iterate over all options
-			Option cur = opsIt.next();
-			Iterator<String> factNames = cur.consequences.keySet().iterator();
-			while(factNames.hasNext()){
-				//Iterate over its consequences
-				String fact = factNames.next();
-				if (fact.equals(factName)){
-					//is factName in the consequences?
-					return true;
-				}
-			}
-		}
-		return false;
-	}
-	
-	public int leadsToFactTimes(String factName){
-		//returns whether this question can assign a value to factName
-		Iterator<Option> opsIt = options.iterator();
-		int cnt = 0;
-		while (opsIt.hasNext()){
-			//Iterate over all options
-			Option cur = opsIt.next();
-			Iterator<String> factNames = cur.consequences.keySet().iterator();
-			while(factNames.hasNext()){
-				//Iterate over its consequences
-				String fact = factNames.next();
-				if (fact.equals(factName)){
-					//is factName in the consequences?
-					++cnt;
-				}
-			}
-		}
-		return cnt;
-	}
-	
-	public boolean leadsToGoal(String goalName, String goalValue){
-		//returns whether this question can assign the desired value to factName
-		Iterator<Option> opsIt = options.iterator();
-		while (opsIt.hasNext()){
-			//Iterate over all options
-			Option cur = opsIt.next();
-			Iterator<String> factNames = cur.consequences.keySet().iterator();
-			while(factNames.hasNext()){
-				//Iterate over its consequences
-				String fact = factNames.next();
-				if (fact.equals(goalName) && cur.consequences.get(fact).equals(goalValue)){
-					//is factName in the consequences?
-					return true;
-				}
-			}
-		}
-		return false;
-	}
-	
-	public int leadsToGoalTimes(String goalName, String goalValue){
+	public int leadsToGoalsTimes(KnowledgeBase kb){
 		//returns whether this question can assign the desired value to factName
 		int cnt = 0;
 		Iterator<Option> opsIt = options.iterator();
 		while (opsIt.hasNext()){
 			//Iterate over all options
 			Option cur = opsIt.next();
-			Iterator<String> factNames = cur.consequences.keySet().iterator();
-			while(factNames.hasNext()){
+			Enumeration<String> factNames = cur.consequences.keys();
+			while(factNames.hasMoreElements()){
 				//Iterate over its consequences
-				String fact = factNames.next();
-				if (fact.equals(goalName) && cur.consequences.get(fact).equals(goalValue)){
-					//is factName in the consequences?
+				String fact = factNames.nextElement();
+				if (kb.getGoals().get(fact) != null && kb.getGoals().get(fact).equals(cur.consequences.get(fact))){
+					//If the consequence is a goal
 					++cnt;
 				}
 			}
@@ -156,9 +100,6 @@ public class Question {
 	}
 	public ArrayList<Option> getOptions() {
 		return options;
-	}
-	public void setOptions(ArrayList<Option> options) {
-		this.options = options;
 	}
 	
 	

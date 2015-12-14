@@ -3,58 +3,49 @@ package knowledgeBase;
 import java.util.Enumeration;
 import java.util.Hashtable;
 
+import logic.TruthState;
+
 public class Rule {
 	
-	private Hashtable<String,String> conditions = new Hashtable<String,String>();//TODO: only OR right now
-	private Hashtable<String,String> consequences = new Hashtable<String,String>();//only AND
+	private TruthState condition;
+	private Hashtable<String,String> consequences;;//only AND
 	
 	public Rule() {
-		this.conditions = new Hashtable<String,String>();
+		this.condition = null;
 		this.consequences = new Hashtable<String,String>();
 	}
 
-	public boolean satisfies(Hashtable<String,String> facts){
-		Enumeration<String> it = conditions.keys();
-		while (it.hasMoreElements()){
-			String cur = it.nextElement();//iterate over conditions
-			if (facts.get(cur) != null && facts.get(cur) == conditions.get(cur)){
-				return true;//OR-logic: return if any condition is true
-			}
-		}
-		return false;
+	public boolean satisfies(KnowledgeBase kb){
+		return condition.valuate(kb);
 	}
 	
-	public Hashtable<String,String> apply(Hashtable<String,String> facts){
+	public void apply(KnowledgeBase kb){
 		//return a new version of facts that has the consequences of this rule in it
-		assert(satisfies(facts));//Just to be sure, may be removed (TODO)
-		Hashtable<String,String> next = new Hashtable<String,String>(facts);
+		assert(satisfies(kb));//Just to be sure, may be removed (TODO)
 		Enumeration<String> it = consequences.keys();
 		while (it.hasMoreElements()){
 			String cur = it.nextElement();
-			next.put(cur, consequences.get(cur));
+			kb.addFact(cur, consequences.get(cur));
 		}
-		return next;
 	}
 	
-	public void addCondition(String factName, String factValue){
-		conditions.put(factName, factValue);
+	public TruthState getCondition() {
+		return condition;
 	}
-	
+
+	public void setCondition(TruthState condition) {
+		this.condition = condition;
+	}
+
 	public void addConsequence(String factName, String factValue){
 		consequences.put(factName, factValue);
 	}
 	
 	public String toString(){
 		String s = "";
-		Enumeration<String> it = conditions.keys();
-		while (it.hasMoreElements()){
-			String cur = it.nextElement();
-			s += "(" + cur + "==" + conditions.get(cur) + ")";
-			if (it.hasMoreElements())
-				s += " OR ";
-		}
+		s += condition.toString();
 		s += " --> ";
-		it = consequences.keys();
+		Enumeration<String> it = consequences.keys();
 		while (it.hasMoreElements()){
 			String cur = it.nextElement();
 			s += "(" + cur + "==" + consequences.get(cur) + ")";
