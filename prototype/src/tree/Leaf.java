@@ -8,7 +8,7 @@ public class Leaf extends Node {
 	
 	@Override
 	public String serialize(int tabCount) {
-		String json = "{" + "End: " + getQuestion() + '}';
+		String json = "{" + "\"End\": \"" + getQuestion() + "\"}";
 		
 		return json;
 	}

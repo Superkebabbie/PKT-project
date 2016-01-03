@@ -68,16 +68,16 @@ public class Node implements Serializable{
 	@Override
 	public String serialize(int tabCount) {
 		String json = "{\n";
-		json += Tree.tabs(tabCount) + "Question: " + question + ",\n";
+		json += Tree.tabs(tabCount) + "\"Question\": \"" + question + "\",\n";
 		
-		json += Tree.tabs(tabCount) + "Answers: [";
+		json += Tree.tabs(tabCount) + "\"Answers\": [";
 		Iterator<String> keys = answers.keySet().iterator();
 		++tabCount;
 		while (keys.hasNext()){
 			String cur = keys.next();
 			json += "\n" + Tree.tabs(tabCount) + "{";
-			json += "\n" + Tree.tabs(++tabCount) + "Text: " + cur + ',';
-			json += "\n" + Tree.tabs(tabCount) + "Node: " + answers.get(cur).serialize(tabCount+1);
+			json += "\n" + Tree.tabs(++tabCount) + "\"Text\": \"" + cur + "\",";
+			json += "\n" + Tree.tabs(tabCount) + "\"Node\": " + answers.get(cur).serialize(tabCount+1);
 			json += "\n" + Tree.tabs(--tabCount) + "}";
 			if (keys.hasNext())//append a comma if not last item
 				json += ',';

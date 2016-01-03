@@ -1,14 +1,6 @@
 package runner;
 
-import java.util.ArrayList;
-import java.util.Hashtable;
-
 import knowledgeBase.KnowledgeBase;
-import knowledgeBase.Question;
-import knowledgeBase.Rule;
-import logic.Fact;
-import logic.Or;
-import logic.TruthState;
 import tree.Tree;
 
 public class Main {
@@ -107,7 +99,11 @@ public class Main {
 		*/
 		
 		KnowledgeBase kb = new KnowledgeBase("knowledge-base-example.xml");
-		//Tree decTree = new Tree(kb.solve());
-		//decTree.save("test.json");
+		System.out.println(kb);
+		Tree decTree = new Tree(kb.solve());
+		decTree.save("test.json");
+		
+		//TreeFrame treeUI = new TreeFrame(); // Create the GUI for the tree
+		//treeUI.setTree(decTree); // Add the tree to the GUI
 	}
 }

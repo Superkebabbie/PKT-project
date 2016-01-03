@@ -25,6 +25,11 @@ public class Question {
 		public void addConsequence(String factName, String factValue){
 			consequences.put(factName, factValue);
 		}
+		
+		@Override
+		public String toString(){
+			return description + " ==> " + consequences.toString();
+		}
 	}
 	
 	private String question;
@@ -102,7 +107,15 @@ public class Question {
 		return options;
 	}
 	
-	
-	
+	@Override
+	public String toString(){
+		StringBuffer s = new StringBuffer(question + ":\n");
+		Iterator<Option> ops = options.iterator();
+		while(ops.hasNext()){
+			Option o = ops.next();
+			s.append('\t' + o.toString() + '\n');
+		}
+		return s.toString();
+	}
 	
 }

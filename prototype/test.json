@@ -1,1127 +1,595 @@
 {
-	Tree: {
-		Question: What do you like most?,
-		Answers: [
+	"Tree": {
+		"Question": "What do you like most?",
+		"Answers": [
 			{
-				Text: NLP,
-				Node: {End: OUT OF OPTIONS, FAIL...}
-			},
-			{
-				Text: computer architecture,
-				Node: {End: OUT OF OPTIONS, FAIL...}
-			},
-			{
-				Text: robots,
-				Node: {
-					Question: What math level did you follow during highschool? (Old second phase system),
-					Answers: [
+				"Text": "NLP",
+				"Node": {
+					"Question": "What math level did you follow during highschool? (Old second phase system)",
+					"Answers": [
 						{
-							Text: A1,
-							Node: {
-								Question: Did you follow a different program at the univeristy?,
-								Answers: [
+							"Text": "A1",
+							"Node": {
+								"Question": "Did you follow a different program at the univeristy?",
+								"Answers": [
 									{
-										Text: Yes, but not something in this list,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
+										"Text": "Yes, but not something in this list",
+										"Node": {
+											"Question": "How would you qualify the math in your previous program?",
+											"Answers": [
 												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
+													"Text": "Of a Beta level",
+													"Node": {"End": "Proven: Artificial Intelligence."}
 												},
 												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
+													"Text": "Of an Alfa level",
+													"Node": {"End": "OUT OF QUESTIONS, FAIL...null"}
 												}
 											]
 										}
 									},
 									{
-										Text: No,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
+										"Text": "No",
+										"Node": {
+											"Question": "How would you qualify the math in your previous program?",
+											"Answers": [
 												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
+													"Text": "Of a Beta level",
+													"Node": {"End": "OUT OF QUESTIONS, FAIL...null"}
 												},
 												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
+													"Text": "Of an Alfa level",
+													"Node": {"End": "OUT OF QUESTIONS, FAIL...null"}
 												}
 											]
 										}
 									},
 									{
-										Text: Astrophysics,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
-												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												},
-												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												}
-											]
-										}
+										"Text": "Astrophysics",
+										"Node": {"End": "Proven: Artificial Intelligence."}
 									},
 									{
-										Text: Artificial Intelligence,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
-												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												},
-												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												}
-											]
-										}
+										"Text": "Artificial Intelligence",
+										"Node": {"End": "Proven: Artificial Intelligence."}
 									}
 								]
 							}
 						},
 						{
-							Text: B2,
-							Node: {
-								Question: Did you follow a different program at the univeristy?,
-								Answers: [
+							"Text": "B2",
+							"Node": {"End": "Proven: Artificial Intelligence."}
+						},
+						{
+							"Text": "A2",
+							"Node": {
+								"Question": "Did you follow a different program at the univeristy?",
+								"Answers": [
 									{
-										Text: Yes, but not something in this list,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
+										"Text": "Yes, but not something in this list",
+										"Node": {
+											"Question": "How would you qualify the math in your previous program?",
+											"Answers": [
 												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
+													"Text": "Of a Beta level",
+													"Node": {"End": "Proven: Artificial Intelligence."}
 												},
 												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
+													"Text": "Of an Alfa level",
+													"Node": {"End": "OUT OF QUESTIONS, FAIL...null"}
 												}
 											]
 										}
 									},
 									{
-										Text: No,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
+										"Text": "No",
+										"Node": {
+											"Question": "How would you qualify the math in your previous program?",
+											"Answers": [
 												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
+													"Text": "Of a Beta level",
+													"Node": {"End": "OUT OF QUESTIONS, FAIL...null"}
 												},
 												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
+													"Text": "Of an Alfa level",
+													"Node": {"End": "OUT OF QUESTIONS, FAIL...null"}
 												}
 											]
 										}
 									},
 									{
-										Text: Astrophysics,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
-												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												},
-												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												}
-											]
-										}
+										"Text": "Astrophysics",
+										"Node": {"End": "Proven: Artificial Intelligence."}
 									},
 									{
-										Text: Artificial Intelligence,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
-												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												},
-												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												}
-											]
-										}
+										"Text": "Artificial Intelligence",
+										"Node": {"End": "Proven: Artificial Intelligence."}
 									}
 								]
 							}
 						},
 						{
-							Text: A2,
-							Node: {
-								Question: Did you follow a different program at the univeristy?,
-								Answers: [
-									{
-										Text: Yes, but not something in this list,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
-												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												},
-												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												}
-											]
-										}
-									},
-									{
-										Text: No,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
-												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												},
-												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												}
-											]
-										}
-									},
-									{
-										Text: Astrophysics,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
-												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												},
-												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												}
-											]
-										}
-									},
-									{
-										Text: Artificial Intelligence,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
-												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												},
-												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												}
-											]
-										}
-									}
-								]
-							}
+							"Text": "D",
+							"Node": {"End": "Proven: Artificial Intelligence."}
 						},
 						{
-							Text: D,
-							Node: {
-								Question: Did you follow a different program at the univeristy?,
-								Answers: [
-									{
-										Text: Yes, but not something in this list,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
-												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												},
-												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												}
-											]
-										}
-									},
-									{
-										Text: No,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
-												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												},
-												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												}
-											]
-										}
-									},
-									{
-										Text: Astrophysics,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
-												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												},
-												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												}
-											]
-										}
-									},
-									{
-										Text: Artificial Intelligence,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
-												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												},
-												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												}
-											]
-										}
-									}
-								]
-							}
-						},
-						{
-							Text: B1,
-							Node: {
-								Question: Did you follow a different program at the univeristy?,
-								Answers: [
-									{
-										Text: Yes, but not something in this list,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
-												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												},
-												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												}
-											]
-										}
-									},
-									{
-										Text: No,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
-												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												},
-												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												}
-											]
-										}
-									},
-									{
-										Text: Astrophysics,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
-												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												},
-												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												}
-											]
-										}
-									},
-									{
-										Text: Artificial Intelligence,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
-												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												},
-												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												}
-											]
-										}
-									}
-								]
-							}
+							"Text": "B1",
+							"Node": {"End": "Proven: Artificial Intelligence."}
 						}
 					]
 				}
 			},
 			{
-				Text: people,
-				Node: {End: OUT OF OPTIONS, FAIL...}
-			},
-			{
-				Text: thinking,
-				Node: {End: OUT OF OPTIONS, FAIL...}
-			},
-			{
-				Text: programming,
-				Node: {
-					Question: What math level did you follow during highschool? (Old second phase system),
-					Answers: [
+				"Text": "computer architecture",
+				"Node": {
+					"Question": "What math level did you follow during highschool? (Old second phase system)",
+					"Answers": [
 						{
-							Text: A1,
-							Node: {
-								Question: Did you follow a different program at the univeristy?,
-								Answers: [
+							"Text": "A1",
+							"Node": {
+								"Question": "Did you follow a different program at the univeristy?",
+								"Answers": [
 									{
-										Text: Yes, but not something in this list,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
+										"Text": "Yes, but not something in this list",
+										"Node": {
+											"Question": "How would you qualify the math in your previous program?",
+											"Answers": [
 												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
+													"Text": "Of a Beta level",
+													"Node": {"End": "Proven: Computing Science"}
 												},
 												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
+													"Text": "Of an Alfa level",
+													"Node": {"End": "OUT OF QUESTIONS, FAIL...null"}
 												}
 											]
 										}
 									},
 									{
-										Text: No,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
+										"Text": "No",
+										"Node": {
+											"Question": "How would you qualify the math in your previous program?",
+											"Answers": [
 												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
+													"Text": "Of a Beta level",
+													"Node": {"End": "OUT OF QUESTIONS, FAIL...null"}
 												},
 												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
+													"Text": "Of an Alfa level",
+													"Node": {"End": "OUT OF QUESTIONS, FAIL...null"}
 												}
 											]
 										}
 									},
 									{
-										Text: Astrophysics,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
-												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												},
-												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												}
-											]
-										}
+										"Text": "Astrophysics",
+										"Node": {"End": "Proven: Computing Science"}
 									},
 									{
-										Text: Artificial Intelligence,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
-												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												},
-												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												}
-											]
-										}
+										"Text": "Artificial Intelligence",
+										"Node": {"End": "Proven: Computing Science"}
 									}
 								]
 							}
 						},
 						{
-							Text: B2,
-							Node: {
-								Question: Did you follow a different program at the univeristy?,
-								Answers: [
+							"Text": "B2",
+							"Node": {"End": "Proven: Computing Science"}
+						},
+						{
+							"Text": "A2",
+							"Node": {
+								"Question": "Did you follow a different program at the univeristy?",
+								"Answers": [
 									{
-										Text: Yes, but not something in this list,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
+										"Text": "Yes, but not something in this list",
+										"Node": {
+											"Question": "How would you qualify the math in your previous program?",
+											"Answers": [
 												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
+													"Text": "Of a Beta level",
+													"Node": {"End": "Proven: Computing Science"}
 												},
 												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
+													"Text": "Of an Alfa level",
+													"Node": {"End": "OUT OF QUESTIONS, FAIL...null"}
 												}
 											]
 										}
 									},
 									{
-										Text: No,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
+										"Text": "No",
+										"Node": {
+											"Question": "How would you qualify the math in your previous program?",
+											"Answers": [
 												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
+													"Text": "Of a Beta level",
+													"Node": {"End": "OUT OF QUESTIONS, FAIL...null"}
 												},
 												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
+													"Text": "Of an Alfa level",
+													"Node": {"End": "OUT OF QUESTIONS, FAIL...null"}
 												}
 											]
 										}
 									},
 									{
-										Text: Astrophysics,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
-												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												},
-												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												}
-											]
-										}
+										"Text": "Astrophysics",
+										"Node": {"End": "Proven: Computing Science"}
 									},
 									{
-										Text: Artificial Intelligence,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
-												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												},
-												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												}
-											]
-										}
+										"Text": "Artificial Intelligence",
+										"Node": {"End": "Proven: Computing Science"}
 									}
 								]
 							}
 						},
 						{
-							Text: A2,
-							Node: {
-								Question: Did you follow a different program at the univeristy?,
-								Answers: [
-									{
-										Text: Yes, but not something in this list,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
-												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												},
-												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												}
-											]
-										}
-									},
-									{
-										Text: No,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
-												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												},
-												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												}
-											]
-										}
-									},
-									{
-										Text: Astrophysics,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
-												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												},
-												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												}
-											]
-										}
-									},
-									{
-										Text: Artificial Intelligence,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
-												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												},
-												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												}
-											]
-										}
-									}
-								]
-							}
+							"Text": "D",
+							"Node": {"End": "Proven: Computing Science"}
 						},
 						{
-							Text: D,
-							Node: {
-								Question: Did you follow a different program at the univeristy?,
-								Answers: [
-									{
-										Text: Yes, but not something in this list,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
-												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												},
-												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												}
-											]
-										}
-									},
-									{
-										Text: No,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
-												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												},
-												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												}
-											]
-										}
-									},
-									{
-										Text: Astrophysics,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
-												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												},
-												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												}
-											]
-										}
-									},
-									{
-										Text: Artificial Intelligence,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
-												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												},
-												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												}
-											]
-										}
-									}
-								]
-							}
-						},
-						{
-							Text: B1,
-							Node: {
-								Question: Did you follow a different program at the univeristy?,
-								Answers: [
-									{
-										Text: Yes, but not something in this list,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
-												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												},
-												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												}
-											]
-										}
-									},
-									{
-										Text: No,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
-												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												},
-												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												}
-											]
-										}
-									},
-									{
-										Text: Astrophysics,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
-												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												},
-												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												}
-											]
-										}
-									},
-									{
-										Text: Artificial Intelligence,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
-												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												},
-												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												}
-											]
-										}
-									}
-								]
-							}
+							"Text": "B1",
+							"Node": {"End": "Proven: Computing Science"}
 						}
 					]
 				}
 			},
 			{
-				Text: designing,
-				Node: {End: OUT OF OPTIONS, FAIL...}
+				"Text": "robots",
+				"Node": {
+					"Question": "What math level did you follow during highschool? (Old second phase system)",
+					"Answers": [
+						{
+							"Text": "A1",
+							"Node": {
+								"Question": "Did you follow a different program at the univeristy?",
+								"Answers": [
+									{
+										"Text": "Yes, but not something in this list",
+										"Node": {
+											"Question": "How would you qualify the math in your previous program?",
+											"Answers": [
+												{
+													"Text": "Of a Beta level",
+													"Node": {"End": "Proven: Artificial Intelligence."}
+												},
+												{
+													"Text": "Of an Alfa level",
+													"Node": {"End": "OUT OF QUESTIONS, FAIL...null"}
+												}
+											]
+										}
+									},
+									{
+										"Text": "No",
+										"Node": {
+											"Question": "How would you qualify the math in your previous program?",
+											"Answers": [
+												{
+													"Text": "Of a Beta level",
+													"Node": {"End": "OUT OF QUESTIONS, FAIL...null"}
+												},
+												{
+													"Text": "Of an Alfa level",
+													"Node": {"End": "OUT OF QUESTIONS, FAIL...null"}
+												}
+											]
+										}
+									},
+									{
+										"Text": "Astrophysics",
+										"Node": {"End": "Proven: Artificial Intelligence."}
+									},
+									{
+										"Text": "Artificial Intelligence",
+										"Node": {"End": "Proven: Artificial Intelligence."}
+									}
+								]
+							}
+						},
+						{
+							"Text": "B2",
+							"Node": {"End": "Proven: Artificial Intelligence."}
+						},
+						{
+							"Text": "A2",
+							"Node": {
+								"Question": "Did you follow a different program at the univeristy?",
+								"Answers": [
+									{
+										"Text": "Yes, but not something in this list",
+										"Node": {
+											"Question": "How would you qualify the math in your previous program?",
+											"Answers": [
+												{
+													"Text": "Of a Beta level",
+													"Node": {"End": "Proven: Artificial Intelligence."}
+												},
+												{
+													"Text": "Of an Alfa level",
+													"Node": {"End": "OUT OF QUESTIONS, FAIL...null"}
+												}
+											]
+										}
+									},
+									{
+										"Text": "No",
+										"Node": {
+											"Question": "How would you qualify the math in your previous program?",
+											"Answers": [
+												{
+													"Text": "Of a Beta level",
+													"Node": {"End": "OUT OF QUESTIONS, FAIL...null"}
+												},
+												{
+													"Text": "Of an Alfa level",
+													"Node": {"End": "OUT OF QUESTIONS, FAIL...null"}
+												}
+											]
+										}
+									},
+									{
+										"Text": "Astrophysics",
+										"Node": {"End": "Proven: Artificial Intelligence."}
+									},
+									{
+										"Text": "Artificial Intelligence",
+										"Node": {"End": "Proven: Artificial Intelligence."}
+									}
+								]
+							}
+						},
+						{
+							"Text": "D",
+							"Node": {"End": "Proven: Artificial Intelligence."}
+						},
+						{
+							"Text": "B1",
+							"Node": {"End": "Proven: Artificial Intelligence."}
+						}
+					]
+				}
 			},
 			{
-				Text: agents,
-				Node: {
-					Question: What math level did you follow during highschool? (Old second phase system),
-					Answers: [
+				"Text": "people",
+				"Node": {"End": "Proven: Psychology"}
+			},
+			{
+				"Text": "thinking",
+				"Node": {"End": "Proven: Philosophy"}
+			},
+			{
+				"Text": "programming",
+				"Node": {
+					"Question": "What math level did you follow during highschool? (Old second phase system)",
+					"Answers": [
 						{
-							Text: A1,
-							Node: {
-								Question: Did you follow a different program at the univeristy?,
-								Answers: [
+							"Text": "A1",
+							"Node": {
+								"Question": "Did you follow a different program at the univeristy?",
+								"Answers": [
 									{
-										Text: Yes, but not something in this list,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
+										"Text": "Yes, but not something in this list",
+										"Node": {
+											"Question": "How would you qualify the math in your previous program?",
+											"Answers": [
 												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
+													"Text": "Of a Beta level",
+													"Node": {"End": "Proven: Computing Science"}
 												},
 												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
+													"Text": "Of an Alfa level",
+													"Node": {"End": "OUT OF QUESTIONS, FAIL...null"}
 												}
 											]
 										}
 									},
 									{
-										Text: No,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
+										"Text": "No",
+										"Node": {
+											"Question": "How would you qualify the math in your previous program?",
+											"Answers": [
 												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
+													"Text": "Of a Beta level",
+													"Node": {"End": "OUT OF QUESTIONS, FAIL...null"}
 												},
 												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
+													"Text": "Of an Alfa level",
+													"Node": {"End": "OUT OF QUESTIONS, FAIL...null"}
 												}
 											]
 										}
 									},
 									{
-										Text: Astrophysics,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
-												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												},
-												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												}
-											]
-										}
+										"Text": "Astrophysics",
+										"Node": {"End": "Proven: Computing Science"}
 									},
 									{
-										Text: Artificial Intelligence,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
-												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												},
-												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												}
-											]
-										}
+										"Text": "Artificial Intelligence",
+										"Node": {"End": "Proven: Computing Science"}
 									}
 								]
 							}
 						},
 						{
-							Text: B2,
-							Node: {
-								Question: Did you follow a different program at the univeristy?,
-								Answers: [
+							"Text": "B2",
+							"Node": {"End": "Proven: Computing Science"}
+						},
+						{
+							"Text": "A2",
+							"Node": {
+								"Question": "Did you follow a different program at the univeristy?",
+								"Answers": [
 									{
-										Text: Yes, but not something in this list,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
+										"Text": "Yes, but not something in this list",
+										"Node": {
+											"Question": "How would you qualify the math in your previous program?",
+											"Answers": [
 												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
+													"Text": "Of a Beta level",
+													"Node": {"End": "Proven: Computing Science"}
 												},
 												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
+													"Text": "Of an Alfa level",
+													"Node": {"End": "OUT OF QUESTIONS, FAIL...null"}
 												}
 											]
 										}
 									},
 									{
-										Text: No,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
+										"Text": "No",
+										"Node": {
+											"Question": "How would you qualify the math in your previous program?",
+											"Answers": [
 												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
+													"Text": "Of a Beta level",
+													"Node": {"End": "OUT OF QUESTIONS, FAIL...null"}
 												},
 												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
+													"Text": "Of an Alfa level",
+													"Node": {"End": "OUT OF QUESTIONS, FAIL...null"}
 												}
 											]
 										}
 									},
 									{
-										Text: Astrophysics,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
-												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												},
-												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												}
-											]
-										}
+										"Text": "Astrophysics",
+										"Node": {"End": "Proven: Computing Science"}
 									},
 									{
-										Text: Artificial Intelligence,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
-												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												},
-												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												}
-											]
-										}
+										"Text": "Artificial Intelligence",
+										"Node": {"End": "Proven: Computing Science"}
 									}
 								]
 							}
 						},
 						{
-							Text: A2,
-							Node: {
-								Question: Did you follow a different program at the univeristy?,
-								Answers: [
+							"Text": "D",
+							"Node": {"End": "Proven: Computing Science"}
+						},
+						{
+							"Text": "B1",
+							"Node": {"End": "Proven: Computing Science"}
+						}
+					]
+				}
+			},
+			{
+				"Text": "designing",
+				"Node": {"End": "OUT OF OPTIONS, FAIL..."}
+			},
+			{
+				"Text": "agents",
+				"Node": {
+					"Question": "What math level did you follow during highschool? (Old second phase system)",
+					"Answers": [
+						{
+							"Text": "A1",
+							"Node": {
+								"Question": "Did you follow a different program at the univeristy?",
+								"Answers": [
 									{
-										Text: Yes, but not something in this list,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
+										"Text": "Yes, but not something in this list",
+										"Node": {
+											"Question": "How would you qualify the math in your previous program?",
+											"Answers": [
 												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
+													"Text": "Of a Beta level",
+													"Node": {"End": "Proven: Artificial Intelligence."}
 												},
 												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
+													"Text": "Of an Alfa level",
+													"Node": {"End": "OUT OF QUESTIONS, FAIL...null"}
 												}
 											]
 										}
 									},
 									{
-										Text: No,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
+										"Text": "No",
+										"Node": {
+											"Question": "How would you qualify the math in your previous program?",
+											"Answers": [
 												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
+													"Text": "Of a Beta level",
+													"Node": {"End": "OUT OF QUESTIONS, FAIL...null"}
 												},
 												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
+													"Text": "Of an Alfa level",
+													"Node": {"End": "OUT OF QUESTIONS, FAIL...null"}
 												}
 											]
 										}
 									},
 									{
-										Text: Astrophysics,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
-												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												},
-												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												}
-											]
-										}
+										"Text": "Astrophysics",
+										"Node": {"End": "Proven: Artificial Intelligence."}
 									},
 									{
-										Text: Artificial Intelligence,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
-												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												},
-												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												}
-											]
-										}
+										"Text": "Artificial Intelligence",
+										"Node": {"End": "Proven: Artificial Intelligence."}
 									}
 								]
 							}
 						},
 						{
-							Text: D,
-							Node: {
-								Question: Did you follow a different program at the univeristy?,
-								Answers: [
+							"Text": "B2",
+							"Node": {"End": "Proven: Artificial Intelligence."}
+						},
+						{
+							"Text": "A2",
+							"Node": {
+								"Question": "Did you follow a different program at the univeristy?",
+								"Answers": [
 									{
-										Text: Yes, but not something in this list,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
+										"Text": "Yes, but not something in this list",
+										"Node": {
+											"Question": "How would you qualify the math in your previous program?",
+											"Answers": [
 												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
+													"Text": "Of a Beta level",
+													"Node": {"End": "Proven: Artificial Intelligence."}
 												},
 												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
+													"Text": "Of an Alfa level",
+													"Node": {"End": "OUT OF QUESTIONS, FAIL...null"}
 												}
 											]
 										}
 									},
 									{
-										Text: No,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
+										"Text": "No",
+										"Node": {
+											"Question": "How would you qualify the math in your previous program?",
+											"Answers": [
 												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
+													"Text": "Of a Beta level",
+													"Node": {"End": "OUT OF QUESTIONS, FAIL...null"}
 												},
 												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
+													"Text": "Of an Alfa level",
+													"Node": {"End": "OUT OF QUESTIONS, FAIL...null"}
 												}
 											]
 										}
 									},
 									{
-										Text: Astrophysics,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
-												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												},
-												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												}
-											]
-										}
+										"Text": "Astrophysics",
+										"Node": {"End": "Proven: Artificial Intelligence."}
 									},
 									{
-										Text: Artificial Intelligence,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
-												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												},
-												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												}
-											]
-										}
+										"Text": "Artificial Intelligence",
+										"Node": {"End": "Proven: Artificial Intelligence."}
 									}
 								]
 							}
 						},
 						{
-							Text: B1,
-							Node: {
-								Question: Did you follow a different program at the univeristy?,
-								Answers: [
-									{
-										Text: Yes, but not something in this list,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
-												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												},
-												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												}
-											]
-										}
-									},
-									{
-										Text: No,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
-												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												},
-												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												}
-											]
-										}
-									},
-									{
-										Text: Astrophysics,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
-												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												},
-												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												}
-											]
-										}
-									},
-									{
-										Text: Artificial Intelligence,
-										Node: {
-											Question: How would you qualify the math in your previous program?,
-											Answers: [
-												{
-													Text: Of a Beta level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												},
-												{
-													Text: Of an Alfa level,
-													Node: {End: OUT OF QUESTIONS, FAIL...}
-												}
-											]
-										}
-									}
-								]
-							}
+							"Text": "D",
+							"Node": {"End": "Proven: Artificial Intelligence."}
+						},
+						{
+							"Text": "B1",
+							"Node": {"End": "Proven: Artificial Intelligence."}
 						}
 					]
 				}
