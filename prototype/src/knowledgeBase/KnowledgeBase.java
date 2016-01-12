@@ -5,30 +5,27 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Iterator;
-
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-
-import org.xml.sax.Attributes;
-import org.xml.sax.SAXException;
-import org.xml.sax.helpers.DefaultHandler;
+import java.util.LinkedHashMap;
 
 import knowledgeBase.Question.Option;
+import logic.TruthState;
 import tree.Leaf;
 import tree.Node;
 
 public class KnowledgeBase {
 
-	private GoalTable goals;
-	private Hashtable<String,String> facts;
-	private ArrayList<Question> questions;
-	private ArrayList<Rule> rules;
+	private GoalTable goals;					//facts that are to be proven. Look at GoalTable for more details.
+	private Hashtable<String,String> facts;		//facts that are known. String/String (name/value) pairs.
+	private ArrayList<Question> questions;		//questions that can be asked. Look at Question for more details.
+	private ArrayList<Rule> rules;				//rules that can be applied. Look at Rule for more details. 
+	private LinkedHashMap<TruthState,String> comments; //comments that are added to a final answer whenever it applies.
 	
 	public KnowledgeBase() {
 		this.goals = new GoalTable();
 		this.facts = new Hashtable<String,String>();
 		this.questions = new ArrayList<Question>();
 		this.rules = new ArrayList<Rule>();
+		this.comments = new LinkedHashMap<TruthState,String>();
 	}
 	
 	public KnowledgeBase(KnowledgeBase kb){
@@ -37,6 +34,7 @@ public class KnowledgeBase {
 		this.facts = new Hashtable<String,String>(kb.facts);
 		this.questions = new ArrayList<Question>(kb.questions);
 		this.rules = new ArrayList<Rule>(kb.rules);
+		this.comments = new LinkedHashMap<TruthState,String>(kb.comments);
 	}
 	
 	public KnowledgeBase(String xmlFilePath){
@@ -54,6 +52,11 @@ public class KnowledgeBase {
 		goals.removeGoal(name);
 	}
 	
+	public void addComment(TruthState condition, String text){
+		//add a comment
+		comments.put(condition, text);
+	}
+	
 	public boolean goalProven(String name){
 		//return whether a specific goal is proven (correct value assigned)
 		return facts.get(name) != null && goals.get(name).contains(facts.get(name));
@@ -64,7 +67,7 @@ public class KnowledgeBase {
 		return facts.get(name) != null && !goals.get(name).contains(facts.get(name));
 	}
 	
-	public String goalsDone(){
+	public String firstGoalDone(){
 		//Return the first goal that is proven, or null if none are.
 		Enumeration<String> goalsIt = goals.getNames();
 		while (goalsIt.hasMoreElements()){
@@ -74,6 +77,19 @@ public class KnowledgeBase {
 			}
 		}
 		return null;
+	}
+	
+	public Hashtable<String,String> allGoalsDone(){
+		//Return all goals that are proven, can be empty table.
+		Enumeration<String> goalsIt = goals.getNames();
+		Hashtable<String,String> goalsProven = new Hashtable<String,String>(1);
+		while (goalsIt.hasMoreElements()){
+			String name = goalsIt.nextElement();
+			if (goalProven(name)){
+				goalsProven.put(name, facts.get(name));
+			}
+		}
+		return goalsProven;
 	}
 	
 	public boolean allGoalsDisproven(){
@@ -156,23 +172,39 @@ public class KnowledgeBase {
 
 		forwardChain();//update everything that is derivable
 
-		String goalDone = goalsDone();
-		if (goalDone != null){
-			//A goal has been proven!
-			return new Leaf("Proven: " + goals.getDescription(goalDone, facts.get(goalDone)));
+		if (firstGoalDone() != null){
+			//A goal has been proven! Check whether more goals are as well, before reporting.
+			Hashtable<String,String> goalsProven = allGoalsDone();
+			StringBuffer s = new StringBuffer("");
+			Enumeration<String> goalsEn = goalsProven.keys();
+			while (goalsEn.hasMoreElements()){
+				String name = goalsEn.nextElement();
+				s.append(goals.getDescription(name, facts.get(name)));
+				if (goalsEn.hasMoreElements())
+					s.append(", ");
+			}
+			
+			return new Leaf(s.toString() + applicableComments());
 		}
 		if (allGoalsDisproven()){
 			//A value was assigned to the goal facts, but not the right one, stop.
-			return new Leaf("OUT OF OPTIONS, FAIL...");
+			if(goals.getDefaultGoal() != null){
+				return new Leaf(goals.getDefaultGoal());
+			}
+			//If no default goal was placed return a 'default' fail message.
+			return new Leaf("I ran out of options, I don't know what to do...");
 		}
 		if (questions.size() == 0){
 			//No more questions to ask
-			return new Leaf("OUT OF QUESTIONS, FAIL..." + facts.get("general_math_level"));
+			if(goals.getDefaultGoal() != null){
+				return new Leaf(goals.getDefaultGoal());
+			}
+			return new Leaf("I ran out of questions, I don't know what to do...");
 		}
 		Question bestQuestion = findBestQuestion();//find the best question, it will be asked in this node
 		//TODO: if no questions can lead to a goal, stop. However, you need to keep track of rules for this; backward chaining.
 		
-		HashMap<String,Node> branches = new HashMap<String,Node>(questions.size());//this will hold the rest of the tree following each option's selection
+		LinkedHashMap<String,Node> branches = new LinkedHashMap<String,Node>(questions.size());//this will hold the rest of the tree following each option's selection
 
 		Iterator<Option> opsIt = bestQuestion.getOptions().iterator();
 		while(opsIt.hasNext()){ //Iterate over all options
@@ -221,16 +253,27 @@ public class KnowledgeBase {
 					r.apply(this);
 					toRemove.add(r);//rule has been used, can be removed! Can't remove while iterating though!
 					hasApplied = true;
-					System.out.println("Inferred: " + r);
 				}
 			}
 			rules.removeAll(toRemove);
 		} while(hasApplied);//if nothing has been changed, we are done. If one iteration is done and facts contains new facts, new derivables may surface!
 	}
 	
+	private String applicableComments(){
+		StringBuilder s = new StringBuilder();
+		Iterator<TruthState> conditions = comments.keySet().iterator();
+		while(conditions.hasNext()){
+			TruthState cur = conditions.next();
+			if(cur.valuate(this)){
+				s.append("\n\n" + comments.get(cur));
+			}
+		}
+		return s.toString();
+	}
+	
 	@Override
 	public String toString(){
-		StringBuffer s = new StringBuffer("Knowledge Base:\n");
+		StringBuilder s = new StringBuilder("Knowledge Base:\n");
 		s.append("> Goals:\n");
 		s.append(goals.toString());
 		
@@ -252,6 +295,14 @@ public class KnowledgeBase {
 		while(rs.hasNext()){
 			s.append(rs.next().toString() + '\n');
 		}	
+		
+		s.append("> Comments:\n");
+		Iterator<TruthState> cs = comments.keySet().iterator();
+		while(cs.hasNext()){
+			TruthState t = cs.next();
+			s.append(t + " --> \"" + comments.get(t) + "\"");
+		}
+		
 		return s.toString(); 
 	}
 }

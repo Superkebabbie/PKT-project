@@ -33,13 +33,16 @@ public abstract class XMLReader {
 				boolean consequence = false;
 				boolean question = false;
 				boolean option = false;
-				boolean description = false;				
+				boolean description = false;
+				boolean comment = false;
+				boolean text = false;
+				boolean defaultGoal = false;
 				
 				String newGoalName;
 				String newGoalValue;
 				Rule newRule = new Rule();
 				String newFactName;
-				Stack<TruthState> newRuleCondition;
+				Stack<TruthState> newCondition;
 				Question newQuestion = new Question();
 				String newOptionDescription;
 				Hashtable<String,String> newOptionConsequences = new Hashtable<String,String>();
@@ -63,17 +66,17 @@ public abstract class XMLReader {
 						rule = true;
 						break;
 					case("if"):
-						newRuleCondition = new Stack<TruthState>();
+						newCondition = new Stack<TruthState>();
 						condition = true;
 						break;
 					case("and"):
-						newRuleCondition.push(new And());
+						newCondition.push(new And());
 						break;
 					case("or"):
-						newRuleCondition.push(new Or());
+						newCondition.push(new Or());
 						break;
 					case("not"):
-						newRuleCondition.push(new Not());
+						newCondition.push(new Not());
 						break;
 					case("fact"):
 						newFactName = attributes.getValue("name");
@@ -91,6 +94,15 @@ public abstract class XMLReader {
 					case("description"):
 						description = true;
 						break;
+					case("comment"):
+						comment = true;
+						break;
+					case("text"):
+						text = true;
+						break;
+					case("default"):
+						defaultGoal = true;
+						break;
 					}
 				}
 
@@ -106,30 +118,30 @@ public abstract class XMLReader {
 							break;
 						case("rule"):
 							rule = false;
+							newRule.setCondition(newCondition.pop());
+							newCondition = null;
 							kb.addRule(newRule);
 							newRule = new Rule();
 							break;
 						case("if"):
 							condition = false;
-							newRule.setCondition(newRuleCondition.pop());
-							newRuleCondition = null;
 							break;
 						case("and"):
-							if(newRuleCondition.size() > 1){
-								TruthState and = newRuleCondition.pop();//take the current layer from stack
-								newRuleCondition.peek().add(and);//nest it in the next layer (peels down to root)
+							if(newCondition.size() > 1){
+								TruthState and = newCondition.pop();//take the current layer from stack
+								newCondition.peek().add(and);//nest it in the next layer (peels down to root)
 							}
 							break;
 						case("or"):
-							if(newRuleCondition.size() > 1){
-								TruthState or = newRuleCondition.pop();
-								newRuleCondition.peek().add(or);
+							if(newCondition.size() > 1){
+								TruthState or = newCondition.pop();
+								newCondition.peek().add(or);
 							}
 							break;
 						case("not"):
-							if(newRuleCondition.size() > 1){
-								TruthState not = newRuleCondition.pop();
-								newRuleCondition.peek().add(not);
+							if(newCondition.size() > 1){
+								TruthState not = newCondition.pop();
+								newCondition.peek().add(not);
 							}
 							break;
 						case("fact"):
@@ -153,33 +165,64 @@ public abstract class XMLReader {
 						case("description"):
 							description = false;
 							break;
+						case("comment"):
+							comment = false;
+							break;
+						case("text"):
+							text = false;
+							break;
+						case("default"):
+							defaultGoal = false;
+							break;
 					}
 				}
 
 				public void characters(char ch[], int start, int length) throws SAXException {
-					if (rule && condition && fact){
-						if(newRuleCondition.empty()){
-							newRuleCondition.push(new Fact(newFactName,new String(ch, start, length)));
-						}else{
-							newRuleCondition.peek().add(new Fact(newFactName,new String(ch, start, length)));
+					if (rule){
+						if (condition && fact){
+							if(newCondition.empty()){
+								newCondition.push(new Fact(newFactName,new String(ch, start, length)));
+							}else{
+								newCondition.peek().add(new Fact(newFactName,new String(ch, start, length)));
+							}
 						}
-					}
-					if (rule && consequence && fact){
-						newRule.addConsequence(newFactName, new String(ch, start, length));
+						if (consequence && fact){
+							newRule.addConsequence(newFactName, new String(ch, start, length));
+						}
 					}
 					if (goal && answer){
 						kb.addGoal(newGoalName, newGoalValue, new String(ch,start,length));
 					}
-					if (question && !option && description){
-						newQuestion.setQuestion(new String(ch, start, length));
+					if (defaultGoal){
+						kb.getGoals().setDefaultGoal(new String(ch,start,length));
 					}
-					if (question && option && description){
-						newOptionDescription = new String(ch, start, length); 
+					if(question){
+						if(option){
+							if(description){
+								newOptionDescription = new String(ch, start, length);
+							}
+							if(consequence && fact){
+								newOptionConsequences.put(newFactName, new String(ch, start, length));
+							}
+						}else{
+							if(description){
+								newQuestion.setQuestion(new String(ch, start, length));
+							}
+						}
 					}
-					if (question && option && consequence && fact){
-						newOptionConsequences.put(newFactName, new String(ch, start, length));
+					if(comment){
+						if(condition && fact){
+							if(newCondition.empty()){
+								newCondition.push(new Fact(newFactName,new String(ch, start, length)));
+							}else{
+								newCondition.peek().add(new Fact(newFactName,new String(ch, start, length)));
+							}
+						}
+						if(consequence && text){
+							kb.addComment(newCondition.pop(), new String(ch, start, length));
+							newCondition = null;
+						}
 					}
-
 				}
 			}
 

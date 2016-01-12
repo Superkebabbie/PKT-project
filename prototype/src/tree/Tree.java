@@ -45,7 +45,6 @@ public class Tree {
 		}
 		
 		String json = "{\n\t\"Tree\": " + root.serialize(2) + "\n}";
-		System.out.print(json);
 		
 		json = json.replaceAll("\n", System.lineSeparator()); //update the newline character to system dependent line separator.
 		out.write(json);

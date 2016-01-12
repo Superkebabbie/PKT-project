@@ -2,6 +2,7 @@ package runner;
 
 import knowledgeBase.KnowledgeBase;
 import tree.Tree;
+import treeUI.TreeFrame;
 
 public class Main {
 	
@@ -98,12 +99,12 @@ public class Main {
 		
 		*/
 		
-		KnowledgeBase kb = new KnowledgeBase("knowledge-base-example.xml");
+		KnowledgeBase kb = new KnowledgeBase("testkb.xml");
 		System.out.println(kb);
 		Tree decTree = new Tree(kb.solve());
-		decTree.save("test.json");
+		decTree.save("testkb.json");
 		
 		//TreeFrame treeUI = new TreeFrame(); // Create the GUI for the tree
-		//treeUI.setTree(decTree); // Add the tree to the GUI
+	    //treeUI.setTree(decTree); // Add the tree to the GUI
 	}
 }

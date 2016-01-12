@@ -6,17 +6,20 @@ import java.util.Set;
 
 public class GoalTable {
 	
-	private Hashtable<String,Hashtable<String,String>> table; 
+	private Hashtable<String,Hashtable<String,String>> table;
+	private String defaultGoal = null;
 	//In goals, one name may have multiple goal values.
 	//This is represented by a table within a table: the first key is the name.
 	//The second key is a corresponding value, and the value of the inner table is the description.
 	
 	public GoalTable(){
 		this.table = new Hashtable<String, Hashtable<String,String>>();
+		this.defaultGoal = null;
 	}
 	
 	public GoalTable(GoalTable gt){
 		this.table = new Hashtable<String,Hashtable<String,String>>(gt.table);
+		this.defaultGoal = gt.getDefaultGoal();
 	}
 	
 	public void addGoal(String name, String value, String description){
@@ -51,6 +54,14 @@ public class GoalTable {
 		return table.keys();
 	}
 	
+	public String getDefaultGoal() {
+		return defaultGoal;
+	}
+
+	public void setDefaultGoal(String description) {
+		this.defaultGoal = description;
+	}
+	
 	@Override
 	public String toString(){
 		StringBuffer s = new StringBuffer();
@@ -60,9 +71,10 @@ public class GoalTable {
 			Enumeration<String> values = table.get(next).keys();
 			while(values.hasMoreElements()){
 				String val = values.nextElement();
-				s.append(next + " == " + val + " (" + table.get(next).get(val) + '\n');
+				s.append(next + " == " + val + " (" + table.get(next).get(val) + ")\n");
 			}
 		}
+		s.append("DEFAULT: " + defaultGoal + "\n");
 		return s.toString();
 	}
 	
