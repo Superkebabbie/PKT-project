@@ -16,12 +16,11 @@ public class Rule {
 	}
 
 	public boolean satisfies(KnowledgeBase kb){
-		return condition.valuate(kb);
+		return condition.proven(kb);
 	}
 	
 	public void apply(KnowledgeBase kb){
 		//return a new version of facts that has the consequences of this rule in it
-		assert(satisfies(kb));//Just to be sure, may be removed (TODO)
 		Enumeration<String> it = consequences.keys();
 		while (it.hasMoreElements()){
 			String cur = it.nextElement();
@@ -55,9 +54,16 @@ public class Rule {
 		return s;
 	}
 	
-	public boolean leadsToGoal(String goalName, String goalValue){
-		if (consequences.get(goalName) != null){
-			return consequences.get(goalName).equals(goalValue);
+	public boolean hasConsequence(String name, String value){
+		if (consequences.get(name) != null){
+			return consequences.get(name).equals(value);
+		}
+		return false;
+	}
+	
+	public boolean hasNegativeConsequence(String name, String value){
+		if (consequences.get(name) != null){
+			return !consequences.get(name).equals(value);
 		}
 		return false;
 	}

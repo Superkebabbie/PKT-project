@@ -1,6 +1,7 @@
 package knowledgeBase;
 
-import java.util.Hashtable;
+import java.io.File;
+import java.util.HashMap;
 import java.util.Stack;
 
 import javax.xml.parsers.SAXParser;
@@ -12,7 +13,6 @@ import org.xml.sax.helpers.DefaultHandler;
 
 import logic.And;
 import logic.Fact;
-import logic.Not;
 import logic.Or;
 import logic.TruthState;
 
@@ -45,7 +45,7 @@ public abstract class XMLReader {
 				Stack<TruthState> newCondition;
 				Question newQuestion = new Question();
 				String newOptionDescription;
-				Hashtable<String,String> newOptionConsequences = new Hashtable<String,String>();
+				HashMap<String, String> newOptionConsequences = new HashMap<String,String>();
 				
 				public void startDocument() throws SAXException{}
 
@@ -74,9 +74,6 @@ public abstract class XMLReader {
 						break;
 					case("or"):
 						newCondition.push(new Or());
-						break;
-					case("not"):
-						newCondition.push(new Not());
 						break;
 					case("fact"):
 						newFactName = attributes.getValue("name");
@@ -138,12 +135,6 @@ public abstract class XMLReader {
 								newCondition.peek().add(or);
 							}
 							break;
-						case("not"):
-							if(newCondition.size() > 1){
-								TruthState not = newCondition.pop();
-								newCondition.peek().add(not);
-							}
-							break;
 						case("fact"):
 							fact = false;
 							newFactName = new String();
@@ -159,7 +150,7 @@ public abstract class XMLReader {
 						case("option"):
 							newQuestion.addOption(newOptionDescription, newOptionConsequences);
 							newOptionDescription = null;
-							newOptionConsequences = new Hashtable<String,String>();
+							newOptionConsequences = new HashMap<String,String>();
 							option = false;
 							break;
 						case("description"):
@@ -225,7 +216,6 @@ public abstract class XMLReader {
 					}
 				}
 			}
-
 			saxParser.parse(xmlFilePath, new KBHandler());
 		} catch(Exception e){
 			e.printStackTrace();

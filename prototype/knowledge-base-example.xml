@@ -21,7 +21,6 @@
 		<answer value="CS">Computing Science</answer>
 		<answer value="Phi">Philosophy</answer>
 		<answer value="Psy">Psychology</answer>
-		<answer value="$undefined">I don't know what you should do, sorry…</answer>
 		<answer>Something else, namely $program.</answer>
 	</goal>
 

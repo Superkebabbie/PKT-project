@@ -1,57 +1,60 @@
 package knowledgeBase;
 
-import java.util.Enumeration;
-import java.util.Hashtable;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+
+import logic.Fact;
+import logic.TruthState;
 
 public class GoalTable {
 	
-	private Hashtable<String,Hashtable<String,String>> table;
+	private HashMap<TruthState,String> table;
 	private String defaultGoal = null;
-	//In goals, one name may have multiple goal values.
-	//This is represented by a table within a table: the first key is the name.
-	//The second key is a corresponding value, and the value of the inner table is the description.
+	//all goals are a combination of some logical condition to be statisfied (a TruthState) and an associated solution (description; String)
+	//there is also an optional default goal to which the inference can default if no goals could be proven. 
 	
 	public GoalTable(){
-		this.table = new Hashtable<String, Hashtable<String,String>>();
+		this.table = new HashMap<TruthState,String>();
 		this.defaultGoal = null;
 	}
 	
 	public GoalTable(GoalTable gt){
-		this.table = new Hashtable<String,Hashtable<String,String>>(gt.table);
-		this.defaultGoal = gt.getDefaultGoal();
+		this.table = new HashMap<TruthState,String>(gt.table);
+		this.defaultGoal = new String(gt.getDefaultGoal());
+	}
+	
+	public void addGoal(TruthState ts, String description){
+		table.put(ts, description);
 	}
 	
 	public void addGoal(String name, String value, String description){
-		if(table.containsKey(name)){
-			table.get(name).put(value,description);
-		}else{
-			Hashtable<String,String> val = new Hashtable<String,String>(1);
-			val.put(value,description);
-			table.put(name, val);
+		table.put(new Fact(name, value), description);
+	}
+	
+	public String getDescription(TruthState ts){
+		return table.get(ts);
+	}
+	
+	public void removeGoal(TruthState ts){
+		table.remove(ts);
+	}
+	
+	public void removeAll(Collection<TruthState> c){
+		//remove all goals in c from the goals
+		Iterator<TruthState> cs = c.iterator();
+		while(cs.hasNext()){
+			table.remove(cs.next());
 		}
 	}
 	
-	public Set<String> get(String name){
-		//return the possible goal values
-		if (table.containsKey(name)){
-			return table.get(name).keySet();
-		} else {
-			return null;
-		}
-		
+	public ArrayList<TruthState> getGoals(){
+		return new ArrayList<TruthState>(table.keySet());
 	}
 	
-	public String getDescription(String name, String value){
-		return table.get(name).get(value);
-	}
-	
-	public void removeGoal(String name){
-		table.remove(name);
-	}
-	
-	public Enumeration<String> getNames(){
-		return table.keys();
+	public Iterator<TruthState> iterator(){
+		return table.keySet().iterator();
 	}
 	
 	public String getDefaultGoal() {
@@ -65,14 +68,10 @@ public class GoalTable {
 	@Override
 	public String toString(){
 		StringBuffer s = new StringBuffer();
-		Enumeration<String> names = table.keys();
-		while (names.hasMoreElements()){
-			String next = names.nextElement();
-			Enumeration<String> values = table.get(next).keys();
-			while(values.hasMoreElements()){
-				String val = values.nextElement();
-				s.append(next + " == " + val + " (" + table.get(next).get(val) + ")\n");
-			}
+		Iterator<TruthState> keys = table.keySet().iterator();
+		while (keys.hasNext()){
+			TruthState next = keys.next();
+			s.append(next + " ==> " + table.get(next) + "\n");
 		}
 		s.append("DEFAULT: " + defaultGoal + "\n");
 		return s.toString();
