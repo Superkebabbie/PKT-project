@@ -176,6 +176,7 @@ public class KnowledgeBase {
 	//--- SOLVING ------
 	public Node solve(){
 		backwardChain();
+		this.rules = new ArrayList<Rule>(0);//rules no longer need because everything is derived!
 		return solveRec();
 	}
 	

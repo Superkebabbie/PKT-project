@@ -50,7 +50,6 @@ public class Fact implements TruthState {
 	public ArrayList<TruthState> backwardChain(KnowledgeBase kb){
 		//return the conditions of any rules that lead to this fact.
 		ArrayList<TruthState> conditions = new ArrayList<TruthState>();
-		ArrayList<Rule> usedRules = new ArrayList<Rule>();
 		Iterator<Rule> rs = kb.getRules().iterator();
 		if(negative){
 			while(rs.hasNext()){
@@ -60,7 +59,6 @@ public class Fact implements TruthState {
 						conditions.add(r.getCondition());
 					}
 					conditions.addAll(r.getCondition().backwardChain(kb));//RECURSION (find the conditions that lead to this rule!)
-					usedRules.add(r);
 				}
 			}
 		}else{
@@ -71,11 +69,9 @@ public class Fact implements TruthState {
 						conditions.add(r.getCondition());
 					}
 					conditions.addAll(r.getCondition().backwardChain(kb));//RECURSION (find the conditions that lead to this rule!)
-					usedRules.add(r);
 				}
 			}
 		}
-		kb.getRules().removeAll(usedRules);
 		return conditions;
 	}
 	
