@@ -22,7 +22,10 @@ public class GoalTable {
 	
 	public GoalTable(GoalTable gt){
 		this.table = new HashMap<TruthState,String>(gt.table);
-		this.defaultGoal = new String(gt.getDefaultGoal());
+		if(gt.getDefaultGoal() == null)
+			this.defaultGoal = null;
+		else
+			this.defaultGoal = new String(gt.getDefaultGoal());
 	}
 	
 	public void addGoal(TruthState ts, String description){
@@ -71,10 +74,21 @@ public class GoalTable {
 		Iterator<TruthState> keys = table.keySet().iterator();
 		while (keys.hasNext()){
 			TruthState next = keys.next();
-			s.append(next + " ==> " + table.get(next) + "\n");
+			s.append(next + " ==> " + trimString(table.get(next)) + "\n");
 		}
-		s.append("DEFAULT: " + defaultGoal + "\n");
+		if(defaultGoal == null)
+			s.append("DEFAULT: N/A" + "\n");
+		else
+			s.append("DEFAULT: " + defaultGoal + "\n");
 		return s.toString();
+	}
+	
+	private String trimString(String s){
+		if(s.length() > 100){
+			return s.substring(0, 99) + "...";
+		}else{
+			return s;
+		}
 	}
 	
 }

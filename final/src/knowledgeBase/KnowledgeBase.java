@@ -232,7 +232,7 @@ public class KnowledgeBase {
 		//find the best question to ask - based on ratio of many options give the desired value.
 		//returns null if no useful questions exist
 		Question best = null;
-		double bestFitness = 0;
+		double bestFitness = 0.0;
 		Iterator<Question> qs = questions.iterator();
 		while(qs.hasNext()){
 			Question q = qs.next();
@@ -313,7 +313,7 @@ public class KnowledgeBase {
 		Iterator<TruthState> cs = comments.keySet().iterator();
 		while(cs.hasNext()){
 			TruthState t = cs.next();
-			s.append(t + " --> \"" + comments.get(t) + "\"");
+			s.append(t + " --> \"" + comments.get(t) + "\"\n");
 		}
 
 		return s.toString(); 

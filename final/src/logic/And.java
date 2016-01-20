@@ -125,7 +125,7 @@ public class And implements TruthState {
 		//And greatly diminishes the usefulness of a set of facts as it needs all elements to be proven
 		if(elements.size() == 0)
 			return 0;
-		int factsProven = 0;
+		double factsProven = 0;
 		Iterator<TruthState> es = elements.iterator();
 		while(es.hasNext()){
 			factsProven += es.next().factsUsefulness(facts);

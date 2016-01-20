@@ -1,6 +1,5 @@
 package knowledgeBase;
 
-import java.io.File;
 import java.util.HashMap;
 import java.util.Stack;
 
@@ -46,6 +45,7 @@ public abstract class XMLReader {
 				Question newQuestion = new Question();
 				String newOptionDescription;
 				HashMap<String, String> newOptionConsequences = new HashMap<String,String>();
+				StringBuilder newDefaultGoal = new StringBuilder();
 				
 				public void startDocument() throws SAXException{}
 
@@ -164,6 +164,8 @@ public abstract class XMLReader {
 							break;
 						case("default"):
 							defaultGoal = false;
+							kb.getGoals().setDefaultGoal(newDefaultGoal.toString());
+							newDefaultGoal = new StringBuilder();
 							break;
 					}
 				}
@@ -185,7 +187,7 @@ public abstract class XMLReader {
 						kb.addGoal(newGoalName, newGoalValue, new String(ch,start,length));
 					}
 					if (defaultGoal){
-						kb.getGoals().setDefaultGoal(new String(ch,start,length));
+						newDefaultGoal.append(new String(ch,start,length));
 					}
 					if(question){
 						if(option){
