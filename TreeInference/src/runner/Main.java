@@ -39,7 +39,7 @@ public class Main {
 			}
 		}else{
 			System.out.println("ERROR: first argument invalid!");
-			System.out.println("Usage: java -m final <KB_PATH> [useGUI:true|false]");//TODO awaiting name
+			System.out.println("Usage: java -m TreeInference <KB_PATH> [useGUI:true|false]");//TODO awaiting name
 		}
 	}
 }

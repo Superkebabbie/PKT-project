@@ -4,9 +4,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
 
-import interfaces.Serializable;
-
-public class Node implements Serializable{
+public class Node{
 	
 	private String question;
 	private HashMap<String,Node> answers;
@@ -65,7 +63,6 @@ public class Node implements Serializable{
 		return answers.keySet();
 	}
 
-	@Override
 	public String serialize(int tabCount) {
 		String json = "{\n";
 		json += Tree.tabs(tabCount) + "\"Question\": \"" + question + "\",\n";
