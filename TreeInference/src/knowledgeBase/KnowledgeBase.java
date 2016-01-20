@@ -198,7 +198,7 @@ public class KnowledgeBase {
 			//A wrong value was assigned to the goal facts, but not the right one, stop.
 			//System.out.println("\n" + this);
 			if(goals.getDefaultGoal() != null){
-				return new Leaf(goals.getDefaultGoal());
+				return new Leaf(goals.getDefaultGoal() + applicableComments());
 			}
 			//If no default goal was placed return a 'default' fail message.
 			return new Leaf("I ran out of options, I don't know what to do...");
@@ -209,7 +209,7 @@ public class KnowledgeBase {
 			//No more questions to ask
 			//System.out.println("\n" + this);
 			if(goals.getDefaultGoal() != null){
-				return new Leaf(goals.getDefaultGoal());
+				return new Leaf(goals.getDefaultGoal() + applicableComments());
 			}
 			return new Leaf("I ran out of questions, I don't know what to do...");
 		}
